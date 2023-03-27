@@ -58,6 +58,8 @@ async def user(ide:int):
 async def user(id:int):
     return search_user(id)
 
+
+
 @router.post("/api/v2/user/",response_model=User,status_code=201)
 async def user(user:User):
     if type(search_user(user.id))==User:
