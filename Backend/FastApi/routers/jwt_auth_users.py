@@ -11,8 +11,6 @@ load_dotenv()
 ALGORITHM = "HS256"
 ACCESS_TOKEN_DURATION=1
 
-
-
 # pip install python-jose[cryptography]
 # pip install passlib[bcrypt] 
 router = APIRouter()
@@ -74,12 +72,6 @@ async def auth_user(token:str=Depends(oauth2)):
   
   return search_user(username)
 
-   
-      
-      
-      
-
-
 
 async def current_user(user:User= Depends(auth_user)):
   if user.disabled:
@@ -105,9 +97,6 @@ async def login(form:OAuth2PasswordRequestForm = Depends()):
     access_token = {"sub":user.username, "exp":expire}
 
     return {"access_token":jwt.encode(access_token,environ.get('SECRET'),algorithm=ALGORITHM),"token_type":"bearer"}
-
-
-
 
 @router.get("/api/v2/users/jwt/me")
 async def me (user:User =Depends(current_user)):

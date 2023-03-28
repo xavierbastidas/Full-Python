@@ -1,11 +1,8 @@
 from fastapi import APIRouter , Depends ,HTTPException,status
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
-
 router = APIRouter()
-
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
-
 class User(BaseModel):
     username:str
     full_name:str
@@ -53,9 +50,6 @@ async def current_user(token:str = Depends(oauth2)):
           status_code=status.HTTP_400_BAD_REQUEST,detail="Usuario inactivo")
       
   return user
-      
-
-
 
 @router.post("/api/v2/login")
 async def login(form:OAuth2PasswordRequestForm = Depends()):
@@ -70,13 +64,6 @@ async def login(form:OAuth2PasswordRequestForm = Depends()):
 @router.get("/api/v2/users/me")
 async def me (user:User =Depends(current_user)):
     return user
-
-
-
-
-
-
-
 
 
 

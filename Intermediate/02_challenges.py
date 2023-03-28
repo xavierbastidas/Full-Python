@@ -60,6 +60,34 @@ language_leet = {
     'Y':'j',
     'Z':'2',
 }
+language_leet_two = {
+    'A':'4',
+    'B':'8',
+    'C':'C',
+    'D':'D',
+    'E':'3',
+    'F':'F',
+    'G':'6',
+    'H':'H',
+    'I':'1',
+    'J':'J',
+    'K':'>|',
+    'L':'L',
+    'M':'M',
+    'N':'N',
+    'O':'0',
+    'P':'9',
+    'Q':'Q',
+    'R':'R',
+    'S':'5',
+    'T':'7',
+    'U':'U',
+    'V':'V',
+    'W':'\/\/',
+    'X':'><',
+    'Y':'j',
+    'Z':'2',
+}
 
 def leet(word:str):
     transl_word=" "
@@ -67,7 +95,7 @@ def leet(word:str):
        if index==" ":
             transl_word+=index
        else:
-          for value in language_leet[index.title()]:
+          for value in language_leet_two[index.title()]:
                transl_word+=value
     return transl_word
 
