@@ -31,36 +31,7 @@ Reto #1: EL "LENGUAJE HACKER"
  (Usa la primera opción de cada transformación. Por ejemplo "4" para la "a")
 '''
 
-
 language_leet = {
-    'A':'4',
-    'B':'I3',
-    'C':'[',
-    'D':')',
-    'E':'3',
-    'F':'|=',
-    'G':'&',
-    'H':'#',
-    'I':'1',
-    'J':',_|',
-    'K':'>|',
-    'L':'1',
-    'M':'/\/\'',
-    'N':'^/',
-    'O':'0',
-    'P':'|*',
-    'Q':'(_,)',
-    'R':'I2',
-    'S':'5',
-    'T':'7',
-    'U':'(_)',
-    'V':'\/',
-    'W':'\/\/',
-    'X':'><',
-    'Y':'j',
-    'Z':'2',
-}
-language_leet_two = {
     'A':'4',
     'B':'8',
     'C':'C',
@@ -95,7 +66,7 @@ def leet(word:str):
        if index==" ":
             transl_word+=index
        else:
-          for value in language_leet_two[index.title()]:
+          for value in language_leet[index.title()]:
                transl_word+=value
     return transl_word
 

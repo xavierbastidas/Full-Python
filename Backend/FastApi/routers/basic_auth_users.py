@@ -42,7 +42,7 @@ async def current_user(token:str = Depends(oauth2)):
   user=  search_user(token)
   if not user:
       raise HTTPException(
-          status_code=status.HTTP_401_UNAUTHORIZED,detail="Credenciales de autenticacion inavalidas",
+          status_code=status.HTTP_401_UNAUTHORIZED,detail="Credenciales de autenticacion invalidas",
           headers={"www.Autenticate":"Bearer"})
   
   if user.disabled:
@@ -55,10 +55,10 @@ async def current_user(token:str = Depends(oauth2)):
 async def login(form:OAuth2PasswordRequestForm = Depends()):
     user_db = users_db.get(form.username)
     if not user_db:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="El usuario no es correcto")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="The user is not correct")
     user =search_user_db(form.username)
     if not form.password==user.password:
-         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="La contraseña no es correcta")
+         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="The password is not correct")
     return {"access_token":user.username,"token_type":"bearer"}
 
 @router.get("/api/v2/users/me")

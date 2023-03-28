@@ -63,7 +63,7 @@ async def user(id:int):
 @router.post("/api/v2/user/",response_model=User,status_code=201)
 async def user(user:User):
     if type(search_user(user.id))==User:
-       raise HTTPException(status_code=404,detail="El usario ya existe")
+       raise HTTPException(status_code=404,detail="User already exists")
     users_list.append(user)
     return user
 
@@ -74,7 +74,7 @@ async def user(user:User):
         if saved_user.id == user.id:
             users_list[index]=user
             return user
-        return {"error":"No se ha podido actualizar el usuario"}
+        return {"error":"Could not update user"}
 
 @router.delete("/api/v2/user/{id}")
 async def user(id:int):
@@ -82,7 +82,7 @@ async def user(id:int):
         if user.id==id:
             users_list.remove(user)
             return users_list
-        return {"error":"No se ha podido eliminar el usuario"}
+        return {"error":"Could not delete user"}
         
 
 def search_user(id:int):
