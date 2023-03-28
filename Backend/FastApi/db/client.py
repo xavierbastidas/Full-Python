@@ -8,13 +8,4 @@ load_dotenv()
 #Base de datos remota
 db_client = MongoClient(environ.get("URL_MONGO")).test
 
-print(environ.get("URL_MONGO"))
-
-
-
-
-
-
-
-
 
